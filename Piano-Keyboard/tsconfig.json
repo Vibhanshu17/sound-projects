@@ -1,11 +1,11 @@
-{
-    "compilerOptions": {
-      "target": "ES6",         // ES6 target for modern JavaScript
-      "module": "ES6",         // ES6 module system (for modern browsers)
-      "outDir": "./dist",      // The folder where JS files will go
-      "esModuleInterop": true, // Enables default imports from modules with no default export
-      "strict": true
-    },
-    "include": ["src/**/*.ts"] // Your TypeScript source files
-  }
+// {
+//     "compilerOptions": {
+//       "target": "ES6",         // ES6 target for modern JavaScript
+//       "module": "ES6",         // ES6 module system (for modern browsers)
+//       "outDir": "./dist",      // The folder where JS files will go
+//       "esModuleInterop": true, // Enables default imports from modules with no default export
+//       "strict": true
+//     },
+//     "include": ["src/**/*.ts"] // Your TypeScript source files
+//   }
   

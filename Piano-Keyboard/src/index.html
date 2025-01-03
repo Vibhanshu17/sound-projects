@@ -1,41 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="./styles.css" />
-    <title>Piano Keyboard</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="./styles.css" />
+  <title>Piano Keyboard</title>
 </head>
+
 <body>
-    <script type="module" src="./script.js">"Your browser doesn't support JavaScript"</script>
-    <h1>Piano Keyboard</h1>
+  <script type="module" src="./javascript/script.js">"Your browser doesn't support JavaScript"</script>
 
-    <label for="frequency">Choose Frequency: </label>
-    <input type="range" id="frequency" min="20" max="2000" value="440" step="1">
-    <p id="frequency-display">Frequency: 440 Hz</p>
-    <button id="play-button">Play</button>
-    <button id="stop-button">Stop</button>
-    
-    <button id="c-scale"> Play C4 Scale </button>
-
-    <div class="piano">
+  <div class="main">
+    <div style="display:flex; justify-content:space-around;">
+      <div>
+        <h1>Piano Keyboard</h1>
+        <label for="frequency">Choose Frequency: </label>
+        <input type="range" id="frequency" min="20" max="2000" value="440" step="1">
+        <p id="frequency-display">Frequency: 440 Hz</p>
+        <button id="play-button">Play</button>
+        <button id="stop-button">Stop</button>
+        <button id="c-scale"> Play C4 Scale </button>
+      </div>
+      <div class="piano">
         <div id="white-keys">
-            <div class="white-key" id="C4"></div>
-            <div class="white-key" id="D4"></div>
-            <div class="white-key" id="E4"></div>
-            <div class="white-key" id="F4"></div>
-            <div class="white-key" id="G4"></div>
-            <div class="white-key" id="A4"></div>
-            <div class="white-key" id="B4"></div>
+          <div class="white-key" id="C4"></div>
+          <div class="white-key" id="D4"></div>
+          <div class="white-key" id="E4"></div>
+          <div class="white-key" id="F4"></div>
+          <div class="white-key" id="G4"></div>
+          <div class="white-key" id="A4"></div>
+          <div class="white-key" id="B4"></div>
+          <div class="white-key" id="C5"></div>
         </div>
         <div id="black-keys">
-            <div class="black-key" id="C#4" style="left:28px"></div>
-            <div class="black-key" id="D#4" style="left:76px"></div>
-            <div class="black-key" id="F#4" style="left:168px"></div>
-            <div class="black-key" id="G#4" style="left:214px"></div>
-            <div class="black-key" id="A#4" style="left:260px"></div>
+          <div class="black-key" id="C#4" style="left:28px"></div>
+          <div class="black-key" id="D#4" style="left:76px"></div>
+          <div class="black-key" id="F#4" style="left:168px"></div>
+          <div class="black-key" id="G#4" style="left:214px"></div>
+          <div class="black-key" id="A#4" style="left:260px"></div>
         </div>
+      </div>
     </div>
-    
+
+    <br/> <br/>
+
+    <div style="display:flex; gap:20px; margin:20px;">
+      <audio controls style="display:flex; flex-direction:column; align-self:center;">
+        <source src="audio1.mp3" type="audio/mp3">
+        <source src="audio2.mp3" type="audio/mp3">
+        Browser doesn't support audio playback
+      </audio>
+
+      <div id="grid"></div>
+      <div style="display:flex; flex-direction:column; gap:20px; align-self:center">
+        <div class="slider-container">
+          <label for="speedSlider">Select a value:</label>
+          <input type="range" id="speedSlider" min="0.25" max="2.0" value="1.0" step="0.25">
+          <p>Value: <span id="speedSliderValue">1.0</span></p>
+        </div>
+
+        <button id="startAnimation" style="background-color:#55F055;">Start Animation</button>
+        <button id="stopAnimation" style="background-color:#F02233;" disabled>Stop Animation</button>
+        <button id="clearGrid" style="background-color:gray">Clear Grid</button>
+      </div>
+    </div>
+  </div>
+
 </body>
+
 </html>

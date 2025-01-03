@@ -11,11 +11,10 @@ body {
 
 .piano {
     display: flex;
-    /* justify-content: center;
-    align-items: flex-end; */
     position: relative;
     border: 1px solid brown;
     width: fit-content;
+    /* align-items: center; */
 }
 
 .white-key {
@@ -40,5 +39,5 @@ body {
 .white-key:active { background-color: #ddd; }
 .black-key:active { background-color: #555; }
 
-#white-keys { display: flex; }
-#black-keys { display: flex; }
+#white-keys { display: flex;}
+#black-keys { display: flex;}

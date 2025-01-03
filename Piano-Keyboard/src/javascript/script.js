@@ -1,6 +1,24 @@
-// import { AudioPlayer } from "../dist/audioContext"
+import { AudioPlayer } from "./audioPlayer.js";
+import { Grid } from "./grid.js";
 
-import { AudioPlayer } from "./audioContext.js";
+
+const C_SCALE = Array("C4", "D4", "E4", "F4", "G4", "A4", "B4", "C5")
+const noteFrequency = {
+    C4: 261.63,
+    CSharp4: 277.18,
+    D4: 293.66, 
+    DSharp4: 311.13,
+    E4: 329.63,
+    F4: 349.23,
+    FSharp4: 369.99,
+    G4: 392.00,
+    GSharp4: 415.30,
+    A4: 440.00,
+    ASharp4: 466.16,
+    B4: 493.88,
+    C5: 523.25,
+}
+
 
 // Preload sounds
 const sounds = {
@@ -15,7 +33,8 @@ const sounds = {
     GSharp4: new Audio('sounds/GSharp4.mp3'),
     A4: new Audio('sounds/A4.mp3'),
     ASharp4: new Audio('sounds/ASharp4.mp3'),
-    B4: new Audio('sounds/B4.mp3')
+    B4: new Audio('sounds/B4.mp3'),
+    C5: new Audio('sounds/C5.mp3')
 };
 
 const audioContext = new window.AudioContext();
@@ -31,8 +50,9 @@ frequencyInput.addEventListener('input', (event) => {
 })
 
 function playNote(note) {
-    sounds[note].currentTime = 0;  // Reset sound to start
-    sounds[note].play();
+    // sounds[note].currentTime = 0;  // Reset sound to start
+    // sounds[note].play();
+    audioPlayer.playSound(noteFrequency[note])
 }
 
 // Add event listeners to each key
@@ -48,17 +68,30 @@ document.getElementById('G#4').onclick = function() { playNote('GSharp4'); };
 document.getElementById('A4').onclick = function() { playNote('A4'); };
 document.getElementById('A#4').onclick = function() { playNote('ASharp4'); };
 document.getElementById('B4').onclick = function() { playNote('B4'); };
+document.getElementById('C5').onclick = function() { playNote('C5'); };
 
 playButton.addEventListener('click', () => audioPlayer.playSound(frequencyInput.value));
 stopButton.addEventListener('click', () => audioPlayer.stopSound())
 
 document.getElementById('c-scale').onclick = () => {
-    setTimeout(() => audioPlayer.playSound(261.63, 100), 0);
-    setTimeout(() => audioPlayer.playSound(293.66, 100), 500);
-    setTimeout(() => audioPlayer.playSound(329.63, 100), 1000);
-    setTimeout(() => audioPlayer.playSound(349.23, 100), 1500);
-    setTimeout(() => audioPlayer.playSound(392.00, 100), 2000);
-    setTimeout(() => audioPlayer.playSound(440.00, 100), 2500);
-    setTimeout(() => audioPlayer.playSound(493.88, 100), 3000);
-    setTimeout(() => audioPlayer.playSound(523.25, 100), 3500);
+    C_SCALE.forEach((note, index) => setTimeout(() => audioPlayer.playSound(noteFrequency[note], 100), 500*index))
+}
+
+const R = 20, C = 20;
+const gridObj = new Grid(R, C);
+
+const gridElement = document.getElementById('grid')
+const startAnimationButton = document.getElementById('startAnimation')
+const stopAnimationButton = document.getElementById('stopAnimation')
+const clearGridButton = document.getElementById('clearGrid')
+const slider = document.getElementById('speedSlider')
+const sliderValue = document.getElementById('speedSliderValue')
+
+gridElement.appendChild(gridObj.createGrid(R, C))
+startAnimationButton.onclick = () => gridObj.startAnimation(startAnimationButton, stopAnimationButton);
+stopAnimationButton.onclick = () => gridObj.stopAnimation(startAnimationButton, stopAnimationButton)
+clearGridButton.onclick = gridObj.clearGrid
+slider.oninput = () => {
+    gridObj.speedMultiplier = slider.value;
+    sliderValue.textContent = slider.value;
 }
