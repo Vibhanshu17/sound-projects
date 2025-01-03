@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./styles.css" />
+    <title>Piano Keyboard</title>
+</head>
+<body>
+    <script type="module" src="./script.js">"Your browser doesn't support JavaScript"</script>
+    <h1>Piano Keyboard</h1>
+
+    <label for="frequency">Choose Frequency: </label>
+    <input type="range" id="frequency" min="20" max="2000" value="440" step="1">
+    <p id="frequency-display">Frequency: 440 Hz</p>
+    <button id="play-button">Play</button>
+    <button id="stop-button">Stop</button>
+    
+    <button id="c-scale"> Play C4 Scale </button>
+
+    <div class="piano">
+        <div id="white-keys">
+            <div class="white-key" id="C4"></div>
+            <div class="white-key" id="D4"></div>
+            <div class="white-key" id="E4"></div>
+            <div class="white-key" id="F4"></div>
+            <div class="white-key" id="G4"></div>
+            <div class="white-key" id="A4"></div>
+            <div class="white-key" id="B4"></div>
+        </div>
+        <div id="black-keys">
+            <div class="black-key" id="C#4" style="left:28px"></div>
+            <div class="black-key" id="D#4" style="left:76px"></div>
+            <div class="black-key" id="F#4" style="left:168px"></div>
+            <div class="black-key" id="G#4" style="left:214px"></div>
+            <div class="black-key" id="A#4" style="left:260px"></div>
+        </div>
+    </div>
+    
+</body>
+</html>

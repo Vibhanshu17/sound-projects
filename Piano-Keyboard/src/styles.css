@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 50px;
+}
+
+#frequency-display {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.piano {
+    display: flex;
+    /* justify-content: center;
+    align-items: flex-end; */
+    position: relative;
+    border: 1px solid brown;
+    width: fit-content;
+}
+
+.white-key {
+    width: 40px;
+    height: 150px;
+    margin: 2px;
+    background-color: white;
+    border: 1px solid black;
+    position: relative;
+    z-index: 1;
+}
+
+.black-key {
+    width: 30px;
+    height: 100px;
+    background-color: black;
+    position: absolute;
+    z-index: 2;
+    top: 2px;
+}
+
+.white-key:active { background-color: #ddd; }
+.black-key:active { background-color: #555; }
+
+#white-keys { display: flex; }
+#black-keys { display: flex; }
